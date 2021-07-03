@@ -12,7 +12,7 @@ export class UsersService {
   async create(user: CreateUserDto) {
     const createdUser = new this.userModel({
       username: user.username,
-      password: await bcrypt.hash(user.password)
+      password: await bcrypt.hash(user.password, 12)
     })
     return await createdUser.save()
   }
